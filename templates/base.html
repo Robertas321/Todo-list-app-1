@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Todo List</h1>
+        
+        <!-- Form to add a new task -->
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <input type="text" name="task" class="form-control" placeholder="Enter a task" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+        <!-- Table to display tasks -->
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.content }}</td>
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="{{ url_for('edit', task_id=task.id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <!-- Delete Button -->
+                            <a href="{{ url_for('delete', task_id=task.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

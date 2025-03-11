@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit Task</h1>
+        <form action="{{ url_for('edit', task_id=task.id) }}" method="POST">
+            <div class="mb-3">
+                <input type="text" name="task" class="form-control" value="{{ task.content }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Task</button>
+            <a href="/" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
